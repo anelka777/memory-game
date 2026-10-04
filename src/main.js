@@ -1,3 +1,5 @@
+import { el } from './dom.js';
+import { openModal } from './modal.js';
 import { createLayout, renderBoard, setCardOpen } from './ui.js';
 import { createDeck } from './game.js';
 
@@ -17,6 +19,18 @@ function updateCounters() {
     ui.movesEl.textContent = moves;
     ui.pairsEl.textContent = pairs;
 }
+
+ui.leaderboardBtn.addEventListener('click', () => {
+    openModal((close) => [
+        el('h2', { class: 'modal-title' }, 'Leaderboard'),
+        el('p', {}, 'No results yet'),
+        el(
+            'div',
+            { class: 'modal-actions' },
+            el('button', { class: 'btn', type: 'button', onClick: close }, 'Close'),
+        ),
+    ]);
+});
 
 function startNewGame() {
     clearTimeout(timerId);

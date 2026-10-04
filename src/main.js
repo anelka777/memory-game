@@ -1,8 +1,15 @@
-import { el } from './dom.js';
-import { createLayout } from './ui.js';
+import { createLayout, renderBoard } from './ui.js';
+import { createDeck } from './game.js';
 
 const ui = createLayout();
+let deck;
 
-for (let i = 0; i < 16; i++) {
-    ui.board.append(el('button', { class: 'card', type: 'button' }));
+function startNewGame() {
+    deck = createDeck();
+    renderBoard(ui.board, deck);
+    ui.movesEl.textContent = '0';
+    ui.pairsEl.textContent = '0';
 }
+
+ui.newGameBtn.addEventListener('click', startNewGame);
+startNewGame();

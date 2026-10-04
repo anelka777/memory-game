@@ -25,3 +25,14 @@ export function createLayout() {
 
     return { newGameBtn, leaderboardBtn, movesEl, pairsEl, board };
 }
+
+export function renderBoard(board, deck) {
+    const cards = deck.map((card) =>
+        el(
+            'button',
+            { class: 'card', type: 'button', 'data-uid': card.uid },
+            el('img', { class: 'card-face', src: card.src, alt: card.alt }),
+        ),
+    );
+    board.replaceChildren(...cards);
+}

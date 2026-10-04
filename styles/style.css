@@ -45,4 +45,12 @@ body {
     border-radius: 8px;
     background: #3b6ea5;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 }
+
+.card-face { display: none; width: 70%; height: 70%; }
+.card.open { background: #fff; box-shadow: inset 0 0 0 2px #3b6ea5; }
+.card.open .card-face { display: block; }

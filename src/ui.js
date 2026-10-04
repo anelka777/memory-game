@@ -36,3 +36,7 @@ export function renderBoard(board, deck) {
     );
     board.replaceChildren(...cards);
 }
+
+export function setCardOpen(board, uid, isOpen) {
+    board.children[uid].classList.toggle('open', isOpen);
+}

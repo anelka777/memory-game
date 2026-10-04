@@ -1,3 +1,8 @@
 import { el } from './dom.js';
+import { createLayout } from './ui.js';
 
-document.body.append(el('h1', {}, 'Memory Game'));
+const ui = createLayout();
+
+for (let i = 0; i < 16; i++) {
+    ui.board.append(el('button', { class: 'card', type: 'button' }));
+}

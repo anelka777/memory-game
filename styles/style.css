@@ -1,4 +1,48 @@
 body {
     margin: 0;
     font-family: system-ui, sans-serif;
+    background: #f4f1ec;
+    color: #222;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title { margin: 0; font-size: 1.5rem; }
+.header-buttons { display: flex; gap: 8px; }
+
+.btn {
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 6px;
+    background: #3b6ea5;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+.btn:hover { background: #2f5a88; }
+
+.main { max-width: 480px; margin: 24px auto; padding: 0 16px; }
+.stats { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 1.1rem; }
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.card {
+    aspect-ratio: 1;
+    border: 0;
+    border-radius: 8px;
+    background: #3b6ea5;
+    cursor: pointer;
 }

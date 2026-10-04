@@ -1,7 +1,7 @@
-import { el } from './dom.js';
-import { openModal } from './modal.js';
 import { createLayout, renderBoard, setCardOpen } from './ui.js';
 import { createDeck } from './game.js';
+import { saveResult } from './storage.js';
+import { showLeaderboard, showVictory } from './modals.js';
 
 const CLOSE_DELAY = 1000;
 const TOTAL_PAIRS = 8;
@@ -19,18 +19,6 @@ function updateCounters() {
     ui.movesEl.textContent = moves;
     ui.pairsEl.textContent = pairs;
 }
-
-ui.leaderboardBtn.addEventListener('click', () => {
-    openModal((close) => [
-        el('h2', { class: 'modal-title' }, 'Leaderboard'),
-        el('p', {}, 'No results yet'),
-        el(
-            'div',
-            { class: 'modal-actions' },
-            el('button', { class: 'btn', type: 'button', onClick: close }, 'Close'),
-        ),
-    ]);
-});
 
 function startNewGame() {
     clearTimeout(timerId);
@@ -69,7 +57,8 @@ function handleBoardClick(event) {
         firstCard = null;
         updateCounters();
         if (pairs === TOTAL_PAIRS) {
-            // TODO stage 5: open victory modal and save result
+            saveResult(moves);
+            showVictory(moves, startNewGame);
         }
         return;
     }
@@ -90,4 +79,5 @@ function handleBoardClick(event) {
 
 ui.board.addEventListener('click', handleBoardClick);
 ui.newGameBtn.addEventListener('click', startNewGame);
+ui.leaderboardBtn.addEventListener('click', showLeaderboard);
 startNewGame();

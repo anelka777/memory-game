@@ -74,3 +74,6 @@ body {
 }
 .modal-title { margin: 0; }
 .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+
+.results { width: 100%; border-collapse: collapse; text-align: left; }
+.results th, .results td { padding: 6px 8px; border-bottom: 1px solid #ddd; }
